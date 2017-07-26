@@ -47,7 +47,6 @@ define docker::image(
       group   => 'root',
       mode    => '0555',
       content => template('docker/update_docker_image.sh.erb'),
-      tag => 'automatic_safe',
     }
   )
 
