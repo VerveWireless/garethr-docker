@@ -273,7 +273,7 @@ define docker::run(
           $initscript     = "/etc/systemd/system/${service_prefix}${sanitised_title}.service"
           $init_template  = 'docker/etc/systemd/system/docker-run.erb'
           $hasstatus      = true
-          $mode           = '0640'
+          $mode           = '0644'
           $uses_systemd   = true
         }
       }
@@ -325,8 +325,6 @@ define docker::run(
       file { $initscript:
         ensure  => present,
         content => template($init_template),
-        owner   => 'root',
-        group   => $docker_group,
         mode    => $mode,
       }
 
